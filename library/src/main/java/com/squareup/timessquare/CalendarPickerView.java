@@ -95,6 +95,7 @@ public class CalendarPickerView extends ListView {
       new DefaultOnInvalidDateSelectedListener();
   private CellClickInterceptor cellClickInterceptor;
   private List<CalendarCellDecorator> decorators;
+  private CalendarAdapter cellViewAdapter = new DefaultCalendarAdapter();
 
   public void setDecorators(List<CalendarCellDecorator> decorators) {
     this.decorators = decorators;
@@ -757,7 +758,7 @@ public class CalendarPickerView extends ListView {
         monthView =
             MonthView.create(parent, inflater, weekdayNameFormat, listener, today, dividerColor,
                 dayBackgroundResId, dayTextColorResId, titleTextColor, displayHeader,
-                headerTextColor, decorators, locale);
+                headerTextColor, decorators, locale, cellViewAdapter);
       } else {
         monthView.setDecorators(decorators);
       }
