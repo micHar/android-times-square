@@ -3,11 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#f00">
+    android:padding="4dp">
 
     <TextView
         android:id="@+id/day_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        style="@style/CalendarCell.CalendarDate"/>
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/icon"
+        android:scaleType="centerInside"/>
 
 </LinearLayout>
