@@ -34,7 +34,7 @@ public class MonthView extends LinearLayout {
       int dayBackgroundResId, int dayTextColorResId, int titleTextColor, boolean displayHeader,
       int headerTextColor, List<CalendarCellDecorator> decorators, Locale locale, DayViewAdapter adapter) {
     final MonthView view = (MonthView) inflater.inflate(R.layout.month, parent, false);
-    view.initDayView(adapter);
+    view.setDayViewAdapter(adapter);
     view.setDividerColor(dividerColor);
     view.setDayTextColor(dayTextColorResId);
     view.setTitleTextColor(titleTextColor);
@@ -160,8 +160,8 @@ public class MonthView extends LinearLayout {
     grid.setDayTextColor(resId);
   }
 
-  private void initDayView(DayViewAdapter adapter) {
-    grid.initDayView(adapter);
+  public void setDayViewAdapter(DayViewAdapter adapter) {
+    grid.setDayViewAdapter(adapter);
   }
 
   public void setTitleTextColor(int color) {
