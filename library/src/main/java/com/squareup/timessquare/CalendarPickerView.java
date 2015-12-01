@@ -754,14 +754,14 @@ public class CalendarPickerView extends ListView {
 
     @Override public View getView(int position, View convertView, ViewGroup parent) {
       MonthView monthView = (MonthView) convertView;
-      if (monthView == null) {
+      if (monthView == null || !monthView.getTag(R.id.day_view_adapter_class).equals(dayViewAdapter.getClass())) {
         monthView =
             MonthView.create(parent, inflater, weekdayNameFormat, listener, today, dividerColor,
                 dayBackgroundResId, dayTextColorResId, titleTextColor, displayHeader,
                 headerTextColor, decorators, locale, dayViewAdapter);
+        monthView.setTag(R.id.day_view_adapter_class, dayViewAdapter.getClass());
       } else {
         monthView.setDecorators(decorators);
-        monthView.setDayViewAdapter(dayViewAdapter);
       }
       monthView.init(months.get(position), cells.get(position), displayOnly, titleTypeface,
           dateTypeface);
@@ -906,8 +906,11 @@ public class CalendarPickerView extends ListView {
    * Important: set this before you call {@link #init(Date, Date)} methods.  If called afterwards,
    * it will not be consistently applied.
    */
-  public void setCustomDayView(DayViewAdapter adapter) {
-    dayViewAdapter = adapter;
+  public void setCustomDayView(DayViewAdapter dayViewAdapter) {
+    this.dayViewAdapter = dayViewAdapter;
+    if (null != adapter) {
+      adapter.notifyDataSetChanged();
+    }
   }
 
   /** Set a listener to intercept clicks on calendar cells. */
