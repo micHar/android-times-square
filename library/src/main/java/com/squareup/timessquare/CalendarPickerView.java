@@ -761,6 +761,7 @@ public class CalendarPickerView extends ListView {
                 headerTextColor, decorators, locale, dayViewAdapter);
       } else {
         monthView.setDecorators(decorators);
+        monthView.setDayViewAdapter(dayViewAdapter);
       }
       monthView.init(months.get(position), cells.get(position), displayOnly, titleTypeface,
           dateTypeface);

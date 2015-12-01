@@ -79,7 +79,7 @@ public class CalendarRowView extends ViewGroup implements View.OnClickListener {
     this.listener = listener;
   }
 
-  public void initDayView(DayViewAdapter adapter) {
+  public void setDayViewAdapter(DayViewAdapter adapter) {
     for (int i = 0; i < getChildCount(); i++) {
       if(getChildAt(i) instanceof CalendarCellView) {
         adapter.makeCellView((CalendarCellView) getChildAt(i));
