@@ -38,7 +38,7 @@ public class CalendarGridView extends ViewGroup {
     dividerPaint.setColor(color);
   }
 
-  public void initDayView(CalendarAdapter adapter) {
+  public void initDayView(DayViewAdapter adapter) {
     for (int i = 0; i < getChildCount(); i++) {
       ((CalendarRowView) getChildAt(i)).initDayView(adapter);
     }

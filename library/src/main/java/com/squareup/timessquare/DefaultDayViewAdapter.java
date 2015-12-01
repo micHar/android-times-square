@@ -5,7 +5,7 @@ import android.widget.TextView;
 /**
  * Created by Michal on 30/11/15.
  */
-public class DefaultCalendarAdapter implements CalendarAdapter {
+public class DefaultDayViewAdapter implements DayViewAdapter {
 
     @Override
     public void makeCellView(CalendarCellView parent) {

@@ -116,7 +116,7 @@ public class CalendarCellView extends FrameLayout {
   }
 
   public TextView getDayOfMonthTextView(){
-    if(dayOfMonthTextView==null) throw new IllegalStateException("You have to setDayMonthOfView in your custom CalendarAdapter.");
+    if(dayOfMonthTextView==null) throw new IllegalStateException("You have to setDayMonthOfView in your custom DayViewAdapter.");
     return dayOfMonthTextView;
   }
 
