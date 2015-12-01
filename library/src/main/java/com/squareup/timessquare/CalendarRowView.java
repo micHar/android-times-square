@@ -11,12 +11,14 @@ import android.widget.TextView;
 
 import static android.view.View.MeasureSpec.AT_MOST;
 import static android.view.View.MeasureSpec.EXACTLY;
+import static android.view.View.MeasureSpec.UNSPECIFIED;
 import static android.view.View.MeasureSpec.makeMeasureSpec;
 
 /** TableRow that draws a divider between each cell. To be used with {@link CalendarGridView}. */
 public class CalendarRowView extends ViewGroup implements View.OnClickListener {
   private boolean isHeaderRow;
   private MonthView.Listener listener;
+  private boolean squareCells = true;
 
   public CalendarRowView(Context context, AttributeSet attrs) {
     super(context, attrs);
@@ -38,7 +40,8 @@ public class CalendarRowView extends ViewGroup implements View.OnClickListener {
       int r = ((c + 1) * totalWidth) / 7;
       int cellSize = r - l;
       int cellWidthSpec = makeMeasureSpec(cellSize, EXACTLY);
-      int cellHeightSpec = isHeaderRow ? makeMeasureSpec(cellSize, AT_MOST) : cellWidthSpec;
+      int heightMode = squareCells ? EXACTLY : UNSPECIFIED;
+      int cellHeightSpec = isHeaderRow ? makeMeasureSpec(cellSize, AT_MOST) : makeMeasureSpec(cellSize, heightMode);
       child.measure(cellWidthSpec, cellHeightSpec);
       // The row height is the height of the tallest cell.
       if (child.getMeasuredHeight() > rowHeight) {
@@ -82,7 +85,6 @@ public class CalendarRowView extends ViewGroup implements View.OnClickListener {
   public void setDayViewAdapter(DayViewAdapter adapter) {
     for (int i = 0; i < getChildCount(); i++) {
       if(getChildAt(i) instanceof CalendarCellView) {
-        ((CalendarCellView) getChildAt(i)).removeAllViews();
         adapter.makeCellView((CalendarCellView) getChildAt(i));
       }
     }
@@ -123,4 +125,10 @@ public class CalendarRowView extends ViewGroup implements View.OnClickListener {
       }
     }
   }
+
+  public void setSquareCells(boolean squareCells) {
+    this.squareCells = squareCells;
+    invalidate();
+  }
+
 }

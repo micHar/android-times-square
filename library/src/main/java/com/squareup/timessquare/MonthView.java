@@ -23,16 +23,16 @@ public class MonthView extends LinearLayout {
   public static MonthView create(ViewGroup parent, LayoutInflater inflater,
       DateFormat weekdayNameFormat, Listener listener, Calendar today, int dividerColor,
       int dayBackgroundResId, int dayTextColorResId, int titleTextColor, boolean displayHeader,
-      int headerTextColor, Locale locale, DayViewAdapter adapter) {
+      int headerTextColor, boolean squareCells, Locale locale, DayViewAdapter adapter) {
     return create(parent, inflater, weekdayNameFormat, listener, today, dividerColor,
-        dayBackgroundResId, dayTextColorResId, titleTextColor, displayHeader, headerTextColor, null,
+        dayBackgroundResId, dayTextColorResId, titleTextColor, displayHeader, headerTextColor, squareCells, null,
         locale, adapter);
   }
 
   public static MonthView create(ViewGroup parent, LayoutInflater inflater,
       DateFormat weekdayNameFormat, Listener listener, Calendar today, int dividerColor,
       int dayBackgroundResId, int dayTextColorResId, int titleTextColor, boolean displayHeader,
-      int headerTextColor, List<CalendarCellDecorator> decorators, Locale locale, DayViewAdapter adapter) {
+      int headerTextColor, boolean squareCells, List<CalendarCellDecorator> decorators, Locale locale, DayViewAdapter adapter) {
     final MonthView view = (MonthView) inflater.inflate(R.layout.month, parent, false);
     view.setDayViewAdapter(adapter);
     view.setDividerColor(dividerColor);
@@ -40,6 +40,7 @@ public class MonthView extends LinearLayout {
     view.setTitleTextColor(titleTextColor);
     view.setDisplayHeader(displayHeader);
     view.setHeaderTextColor(headerTextColor);
+    view.setSquareCells(squareCells);
 
     if (dayBackgroundResId != 0) {
       view.setDayBackground(dayBackgroundResId);
@@ -158,6 +159,10 @@ public class MonthView extends LinearLayout {
 
   public void setDayTextColor(int resId) {
     grid.setDayTextColor(resId);
+  }
+
+  public void setSquareCells(boolean squareCells) {
+    grid.setSquareCells(squareCells);
   }
 
   public void setDayViewAdapter(DayViewAdapter adapter) {
