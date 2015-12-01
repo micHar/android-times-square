@@ -302,11 +302,6 @@ public class CalendarPickerView extends ListView {
       return this;
     }
 
-    public FluentInitializer withCustomDayView(DayViewAdapter dayViewAdapter) {
-      setDayViewAdapter(dayViewAdapter);
-      return this;
-    }
-
     public FluentInitializer withHighlightedDate(Date date) {
       return withHighlightedDates(Arrays.asList(date));
     }
@@ -691,10 +686,6 @@ public class CalendarPickerView extends ListView {
     validateAndUpdate();
   }
 
-  public void setDayViewAdapter(DayViewAdapter adapter){
-    dayViewAdapter = adapter;
-  }
-
   public void clearHighlightedDates() {
     for (MonthCellDescriptor cal : highlightedCells) {
       cal.setHighlighted(false);
@@ -905,6 +896,17 @@ public class CalendarPickerView extends ListView {
    */
   public void setDateSelectableFilter(DateSelectableFilter listener) {
     dateConfiguredListener = listener;
+  }
+
+
+  /**
+   * Set an adapter used to initialize {@link CalendarCellView} with custom layout.
+   * <p>
+   * Important: set this before you call {@link #init(Date, Date)} methods.  If called afterwards,
+   * it will not be consistently applied.
+   */
+  public void setCustomDayView(DayViewAdapter adapter) {
+    dayViewAdapter = adapter;
   }
 
   /** Set a listener to intercept clicks on calendar cells. */
