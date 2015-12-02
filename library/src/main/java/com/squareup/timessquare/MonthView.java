@@ -25,14 +25,15 @@ public class MonthView extends LinearLayout {
       int dayBackgroundResId, int dayTextColorResId, int titleTextColor, boolean displayHeader,
       int headerTextColor, boolean squareCells, Locale locale, DayViewAdapter adapter) {
     return create(parent, inflater, weekdayNameFormat, listener, today, dividerColor,
-        dayBackgroundResId, dayTextColorResId, titleTextColor, displayHeader, headerTextColor, squareCells, null,
-        locale, adapter);
+        dayBackgroundResId, dayTextColorResId, titleTextColor, displayHeader, headerTextColor,
+        squareCells, null, locale, adapter);
   }
 
   public static MonthView create(ViewGroup parent, LayoutInflater inflater,
       DateFormat weekdayNameFormat, Listener listener, Calendar today, int dividerColor,
       int dayBackgroundResId, int dayTextColorResId, int titleTextColor, boolean displayHeader,
-      int headerTextColor, boolean squareCells, List<CalendarCellDecorator> decorators, Locale locale, DayViewAdapter adapter) {
+      int headerTextColor, boolean squareCells, List<CalendarCellDecorator> decorators,
+      Locale locale, DayViewAdapter adapter) {
     final MonthView view = (MonthView) inflater.inflate(R.layout.month, parent, false);
     view.setDayViewAdapter(adapter);
     view.setDividerColor(dividerColor);

@@ -111,12 +111,16 @@ public class CalendarCellView extends FrameLayout {
     return drawableState;
   }
 
-  public void setDayOfMonthTextView(TextView textView){
+  public void setDayOfMonthTextView(TextView textView) {
     dayOfMonthTextView = textView;
   }
 
-  public TextView getDayOfMonthTextView(){
-    if(dayOfMonthTextView==null) throw new IllegalStateException("You have to setDayMonthOfView in your custom DayViewAdapter.");
+  public TextView getDayOfMonthTextView() {
+    if (dayOfMonthTextView == null) {
+      throw new IllegalStateException(
+              "You have to setDayMonthOfView in your custom DayViewAdapter."
+      );
+    }
     return dayOfMonthTextView;
   }
 
