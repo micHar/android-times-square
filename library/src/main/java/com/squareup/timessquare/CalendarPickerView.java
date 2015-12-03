@@ -573,11 +573,14 @@ public class CalendarPickerView extends ListView {
         if (selectedCals.size() > 1) {
           // We've already got a range selected: clear the old one.
           clearOldSelections();
-        } else if (selectedCals.size() == 1 && newlySelectedCal.compareTo(selectedCals.get(0))==-1) {
+        } else if (selectedCals.size() == 1
+                && newlySelectedCal.compareTo(selectedCals.get(0)) == -1) {
           // We're moving the start of the range back in time: clear the old start date.
           clearOldSelections();
-        } else if(selectedCals.size() == 1 && newlySelectedCal.compareTo(selectedCals.get(0))==0) {
-          // There is only one date selected and it's the one currently clicked by user: deselect it.
+        } else if (selectedCals.size() == 1
+                && newlySelectedCal.compareTo(selectedCals.get(0)) == 0) {
+          // There is only one date selected and it's the one
+          // currently clicked by user: deselect it.
           date = clearSelection(date, newlySelectedCal);
         }
         break;
