@@ -55,7 +55,7 @@ public class CalendarPickerView extends ListView {
      * Allows you to select a date range.  Previous selections are cleared when you either:
      * <ul>
      * <li>Have a range selected and select another date (even if it's in the current range).</li>
-     * <li>Have one date selected and then select an earlier date.</li>
+     * <li>Have one date selected and then select an earlier or the same date.</li>
      * </ul>
      */
     RANGE
@@ -572,14 +572,17 @@ public class CalendarPickerView extends ListView {
         if (selectedCals.size() > 1) {
           // We've already got a range selected: clear the old one.
           clearOldSelections();
-        } else if (selectedCals.size() == 1 && newlySelectedCal.before(selectedCals.get(0))) {
+        } else if (selectedCals.size() == 1 && newlySelectedCal.compareTo(selectedCals.get(0))==-1) {
           // We're moving the start of the range back in time: clear the old start date.
           clearOldSelections();
+        } else if(selectedCals.size() == 1 && newlySelectedCal.compareTo(selectedCals.get(0))==0) {
+          // There is only one date selected and it's the one currently clicked by user: deselect it.
+          date = clearSelection(date, newlySelectedCal);
         }
         break;
 
       case MULTIPLE:
-        date = applyMultiSelect(date, newlySelectedCal);
+        date = clearSelection(date, newlySelectedCal);
         break;
 
       case SINGLE:
@@ -647,7 +650,7 @@ public class CalendarPickerView extends ListView {
     selectedCals.clear();
   }
 
-  private Date applyMultiSelect(Date date, Calendar selectedCal) {
+  private Date clearSelection(Date date, Calendar selectedCal) {
     for (MonthCellDescriptor selectedCell : selectedCells) {
       if (selectedCell.getDate().equals(date)) {
         // De-select the currently-selected cell.
