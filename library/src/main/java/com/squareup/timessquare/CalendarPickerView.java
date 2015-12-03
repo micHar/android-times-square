@@ -86,6 +86,7 @@ public class CalendarPickerView extends ListView {
   private int titleTextColor;
   private boolean displayHeader;
   private int headerTextColor;
+  private boolean squareCells;
   private Typeface titleTypeface;
   private Typeface dateTypeface;
 
@@ -125,7 +126,8 @@ public class CalendarPickerView extends ListView {
         res.getColor(R.color.calendar_text_active));
     displayHeader = a.getBoolean(R.styleable.CalendarPickerView_tsquare_displayHeader, true);
     headerTextColor = a.getColor(R.styleable.CalendarPickerView_tsquare_headerTextColor,
-        res.getColor(R.color.calendar_text_active));
+            res.getColor(R.color.calendar_text_active));
+    squareCells = a.getBoolean(R.styleable.CalendarPickerView_tsquare_squareCells, true);
     a.recycle();
 
     adapter = new MonthAdapter();
@@ -765,7 +767,7 @@ public class CalendarPickerView extends ListView {
         monthView =
             MonthView.create(parent, inflater, weekdayNameFormat, listener, today, dividerColor,
                 dayBackgroundResId, dayTextColorResId, titleTextColor, displayHeader,
-                headerTextColor, decorators, locale, dayViewAdapter);
+                headerTextColor, squareCells, decorators, locale, dayViewAdapter);
         monthView.setTag(R.id.day_view_adapter_class, dayViewAdapter.getClass());
       } else {
         monthView.setDecorators(decorators);

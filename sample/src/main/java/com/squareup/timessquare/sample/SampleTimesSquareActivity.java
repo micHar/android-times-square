@@ -166,9 +166,10 @@ public class SampleTimesSquareActivity extends Activity {
       @Override public void onClick(View view) {
         setButtonsEnabled(customView);
 
-        calendar.setDecorators(Collections.<CalendarCellDecorator>emptyList());
-        calendar.setCustomDayView(new SampleDayViewAdapter());
-        calendar.init(lastYear.getTime(), nextYear.getTime())
+        showCalendarInDialog("Pimp my calendar!", R.layout.dialog_day_view_custom);
+        dialogView.setDecorators(Collections.<CalendarCellDecorator>emptyList());
+        dialogView.setCustomDayView(new SampleDayViewAdapter());
+        dialogView.init(lastYear.getTime(), nextYear.getTime())
                 .inMode(SelectionMode.SINGLE)
                 .withSelectedDate(new Date());
       }

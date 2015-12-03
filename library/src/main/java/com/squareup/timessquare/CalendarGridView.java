@@ -57,6 +57,12 @@ public class CalendarGridView extends ViewGroup {
     }
   }
 
+  public void setSquareCells(boolean squareCells) {
+    for (int i = 0; i < getChildCount(); i++) {
+      ((CalendarRowView) getChildAt(i)).setSquareCells(squareCells);
+    }
+  }
+
   public void setDisplayHeader(boolean displayHeader) {
     getChildAt(0).setVisibility(displayHeader ? VISIBLE : GONE);
   }
