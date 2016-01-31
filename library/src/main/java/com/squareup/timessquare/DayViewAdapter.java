@@ -1,10 +1,6 @@
 package com.squareup.timessquare;
 
-/**
- * Created by Michal Klimczak on 30/11/15.
- */
+/** Adapter used to provide a layout for {@link CalendarCellView}.*/
 public interface DayViewAdapter {
-
-    void makeCellView(CalendarCellView parent);
-
+  void makeCellView(CalendarCellView parent);
 }

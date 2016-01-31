@@ -82,8 +82,9 @@ public class CalendarRowView extends ViewGroup implements View.OnClickListener {
   public void setDayViewAdapter(DayViewAdapter adapter) {
     for (int i = 0; i < getChildCount(); i++) {
       if (getChildAt(i) instanceof CalendarCellView) {
-        ((CalendarCellView) getChildAt(i)).removeAllViews();
-        adapter.makeCellView((CalendarCellView) getChildAt(i));
+        CalendarCellView cell = ((CalendarCellView) getChildAt(i));
+        cell.removeAllViews();
+        adapter.makeCellView(cell);
       }
     }
   }

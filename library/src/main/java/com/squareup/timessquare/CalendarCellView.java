@@ -36,7 +36,6 @@ public class CalendarCellView extends FrameLayout {
   private boolean isToday = false;
   private boolean isHighlighted = false;
   private RangeState rangeState = RangeState.NONE;
-
   private TextView dayOfMonthTextView;
 
   @SuppressWarnings("UnusedDeclaration") //
@@ -118,10 +117,9 @@ public class CalendarCellView extends FrameLayout {
   public TextView getDayOfMonthTextView() {
     if (dayOfMonthTextView == null) {
       throw new IllegalStateException(
-              "You have to setDayMonthOfView in your custom DayViewAdapter."
+              "You have to setDayOfMonthTextView in your custom DayViewAdapter."
       );
     }
     return dayOfMonthTextView;
   }
-
 }
